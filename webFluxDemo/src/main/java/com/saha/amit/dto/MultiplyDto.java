@@ -1,11 +1,15 @@
 package com.saha.amit.dto;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @ToString
 @Data
+@Getter
+@Setter
 public class MultiplyDto {
-    private int first;
-    private int second;
+    public int first;
+    public int second;
 }

@@ -23,9 +23,7 @@ public class ReactiveMathService {
                 .map(i -> new Response(i*n));
     }
 
-    public  Mono<Response> multiply(Mono<MultiplyDto> dtoMono){
-        return dtoMono
-                .map(dto -> dto.getFirst() * dto.getSecond())
-                .map(Response::new);
+    public Mono<Response> multiply(Mono<MultiplyDto> dtoMono){
+        return dtoMono.map(dto -> new  Response(dto.first *dto.second));
     }
 }
