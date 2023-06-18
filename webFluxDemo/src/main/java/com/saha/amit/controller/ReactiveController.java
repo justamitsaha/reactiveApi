@@ -3,6 +3,9 @@ package com.saha.amit.controller;
 import com.saha.amit.dto.MultiplyDto;
 import com.saha.amit.dto.Response;
 import com.saha.amit.service.ReactiveMathService;
+
+import exception.InputValidationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +44,7 @@ public class ReactiveController {
 	@GetMapping("square/{input}/throw")
 	public Mono<Response> findSquareWithValidation(@PathVariable int input) {
 		if(input <10 && input >20) 
-			throw new RuntimeException();
+			throw new InputValidationException(input);
 		return reactiveMathService.findSquare(input);
 	}
 
