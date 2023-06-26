@@ -15,7 +15,23 @@ public class Response {
     private int output;
 
     public Response(int output) {
-        this.output = output;
+        this.setOutput(output);
     }
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public int getOutput() {
+		return output;
+	}
+
+	public void setOutput(int output) {
+		this.output = output;
+	}
 
 }

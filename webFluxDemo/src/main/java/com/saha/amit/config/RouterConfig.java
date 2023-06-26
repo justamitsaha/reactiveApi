@@ -1,4 +1,4 @@
-package config;
+package com.saha.amit.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,14 +11,15 @@ import com.saha.amit.service.RequestHandeler;
 
 @Configuration
 public class RouterConfig {
-	
+
 	@Autowired
 	private RequestHandeler requestHandeler;
-	
+
 	@Bean
-	public RouterFunction<ServerResponse> seRouterFunction(){
+	public RouterFunction<ServerResponse> serverResponseRouterFunction() {
 		return RouterFunctions.route()
-				.GET("routes/square/{input}",requestHandeler::squareHandler )
+				.GET("router/square/{input}", requestHandeler::squareHandler)
+				.GET("router/table/{input}", requestHandeler::tableHandler)
 				.build();
 	}
 }

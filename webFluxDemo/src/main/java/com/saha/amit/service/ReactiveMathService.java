@@ -12,7 +12,6 @@ import java.time.Duration;
 public class ReactiveMathService {
 
     public Mono<Response> findSquare(int n){
-
         return Mono.just(new Response(n*n));
     }
 

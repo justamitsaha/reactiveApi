@@ -1,4 +1,4 @@
-package exception;
+package com.saha.amit.exception;
 
 public class InputValidationException extends RuntimeException {
 	
