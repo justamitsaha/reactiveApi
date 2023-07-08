@@ -5,6 +5,7 @@ import java.util.function.BiFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.function.server.RequestPredicates;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -21,14 +22,23 @@ public class RouterConfig {
 
 	@Autowired
 	private RequestHandeler requestHandeler;
+	
+	@Bean
+	public RouterFunction<ServerResponse> highLevelRouter() {
+		return RouterFunctions.route()
+				.path("router", this::serverResponseRouterFunction)
+				.build();
+	}
 
 	@Bean
 	public RouterFunction<ServerResponse> serverResponseRouterFunction() {
 		return RouterFunctions.route()
-				.GET("router/square/{input}", requestHandeler::squareHandler)
-				.GET("router/table/{input}", requestHandeler::tableHandler)
-				.POST("router/multiply",requestHandeler::multiplyHandler)
-				.GET("router/square/{input}/validation", requestHandeler::squareHandlerWithValidation)
+				.GET("square/{input}", requestHandeler::squareHandler)
+				.GET("squareValidation/{input}", RequestPredicates.path("*/1?"), requestHandeler::squareHandler)
+				.GET("squareValidation/{input}", req -> ServerResponse.badRequest().bodyValue("only 10-19 allowed"))
+				.GET("table/{input}", requestHandeler::tableHandler)
+				.POST("multiply",requestHandeler::multiplyHandler)
+				.GET("square/{input}/validation", requestHandeler::squareHandlerWithValidation)
                 .onError(InputValidationException.class, exceptionHandler())
 				.build();
 	}
