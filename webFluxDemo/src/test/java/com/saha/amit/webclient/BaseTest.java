@@ -1,4 +1,4 @@
-package webFluxDemo.com.saha.amit;
+package com.saha.amit.webclient;
 
 import org.springframework.boot.test.context.SpringBootTest;
 

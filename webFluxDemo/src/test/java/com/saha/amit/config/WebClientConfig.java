@@ -1,4 +1,4 @@
-package webFluxDemo.com.saha.amit;
+package com.saha.amit.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
