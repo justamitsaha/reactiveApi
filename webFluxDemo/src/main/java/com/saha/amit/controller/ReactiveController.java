@@ -28,10 +28,17 @@ public class ReactiveController {
 		return reactiveMathService.findSquare(input);
 	}
 
-	// If MediaType.TEXT_EVENT_STREAM_VALUE not used then Spring boot uses AbstractJackson2Decoder which will collect the response in a Mono of List and return to client
+
 	// http://localhost:8080/reactiveMath/table/8
-	@GetMapping(value = "table/{input}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+	@GetMapping(value = "table/{input}")
 	public Flux<Response> getMultiplicationTable(@PathVariable int input) {
+		return reactiveMathService.getMultiplicationTable(input);
+	}
+
+	// If MediaType.TEXT_EVENT_STREAM_VALUE not used then Spring boot uses AbstractJackson2Decoder which will collect the response in a Mono of List and return to client
+	// http://localhost:8080/reactiveMath/table/8/stream
+	@GetMapping(value = "table/{input}/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+	public Flux<Response> getMultiplicationTableStream(@PathVariable int input) {
 		return reactiveMathService.getMultiplicationTable(input);
 	}
 
