@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-public class BadRequestTest extends BaseTest {
+public class E_BadRequestTest extends BaseTest {
 
     @Autowired
     private WebClient webClient;

@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
-public class FluxResponseWebClientTest extends BaseTest{
+public class B_FluxResponseWebClientTest extends BaseTest{
 
     @Autowired
     private WebClient webClient;

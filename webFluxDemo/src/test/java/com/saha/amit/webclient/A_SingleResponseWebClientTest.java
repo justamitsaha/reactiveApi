@@ -8,7 +8,7 @@ import com.saha.amit.dto.Response;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-public class SingleResponseWebClientTest extends BaseTest {
+public class A_SingleResponseWebClientTest extends BaseTest {
 
     @Autowired
     private WebClient webClient;

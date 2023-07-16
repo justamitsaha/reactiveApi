@@ -8,18 +8,17 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-public class HeadersTest extends BaseTest {
+public class C_PostTest extends BaseTest{
 
     @Autowired
     private WebClient webClient;
 
     @Test
-    public void headersTest() {
+    public void postTest(){
         Mono<Response> responseMono = this.webClient
                 .post()
                 .uri("reactiveMath/multiply")
-                .bodyValue(getMultipleDto(76, 37))
-                .headers(h -> h.set("someKey", "someVal"))
+                .bodyValue(getMultipleDto(76,37))
                 .retrieve()
                 .bodyToMono(Response.class)
                 .doOnNext(System.out::println);
@@ -29,7 +28,7 @@ public class HeadersTest extends BaseTest {
                 .verifyComplete();
     }
 
-    private MultiplyDto getMultipleDto(int a, int b) {
+    private MultiplyDto getMultipleDto(int a, int b){
         MultiplyDto multiplyDto = new MultiplyDto();
         multiplyDto.setFirst(a);
         multiplyDto.setSecond(b);
