@@ -27,5 +27,20 @@ public class FluxResponseWebClientTest extends BaseTest{
                 .verifyComplete();
     }
 
+    @Test
+    public void stepVerifierFluxStreamingEndPont() {
+        Flux<Response> responseFlux = this.webClient
+                .get()
+                .uri("reactiveMath/table/{number}/stream", 5)
+                .retrieve()
+                .bodyToFlux(Response.class)
+                .doOnNext(System.out::println);
+
+
+        StepVerifier.create(responseFlux)
+                .expectNextCount(10)
+                .verifyComplete();
+    }
+
 
 }
