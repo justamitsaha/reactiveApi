@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>webFluxDemo</module>
+        <module>product-service</module>
     </modules>
 
     <parent>
