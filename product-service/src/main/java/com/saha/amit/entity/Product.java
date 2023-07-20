@@ -1,7 +1,9 @@
 package com.saha.amit.entity;
 
-public class Product {
+import org.springframework.data.annotation.Id;
 
+public class Product {
+    @Id
     private String id;
     private String Description;
     private Integer price;
