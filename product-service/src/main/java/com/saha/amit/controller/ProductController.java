@@ -4,6 +4,7 @@ import com.saha.amit.dto.ProductDTO;
 import com.saha.amit.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Range;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -18,7 +19,7 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
-    @GetMapping("all")
+    @GetMapping(value ="all", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ProductDTO> all(){
         return this.service.getAll();
     }

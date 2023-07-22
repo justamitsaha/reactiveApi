@@ -1,7 +1,6 @@
 package com.saha.amit.service;
 
 import com.saha.amit.dto.ProductDTO;
-import com.saha.amit.entity.Product;
 import com.saha.amit.repository.ProductRepository;
 import com.saha.amit.util.EntityDtoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
