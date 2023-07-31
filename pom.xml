@@ -12,6 +12,7 @@
         <module>webFluxDemo</module>
         <module>product-service</module>
         <module>user-service</module>
+        <module>order-service</module>
     </modules>
 
     <parent>
