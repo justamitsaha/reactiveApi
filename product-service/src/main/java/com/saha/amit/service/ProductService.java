@@ -7,11 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.publisher.Sinks;
 
 @Service
 public class ProductService {
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private Sinks.Many<ProductDTO> sink;
 
     public Flux<ProductDTO> getAll() {
         return productRepository.findAll()
@@ -28,7 +32,8 @@ public class ProductService {
         return productDTOMono
                 .map(EntityDtoUtil::toEntity)
                 .flatMap(this.productRepository::insert)
-                .map(EntityDtoUtil::toDto);
+                .map(EntityDtoUtil::toDto)
+                .doOnNext(this.sink::tryEmitNext);
     }
 
     public Mono<ProductDTO> updateProduct(String id, Mono<ProductDTO> productDTOMono){
